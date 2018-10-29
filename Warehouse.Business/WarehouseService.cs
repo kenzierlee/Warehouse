@@ -31,6 +31,15 @@ namespace Warehouse.Business
 
 		public Order UpdateOrder(Order order)
 		{
+			Order existingOrder = _repo.GetOrderById(order.Id);
+			if (existingOrder == null)
+			{
+				throw new Exception("Order not found");
+			}
+			if (existingOrder.Processed == true)
+			{
+				throw new Exception("Order is already processed and cannot be updated");
+			}
 			return _repo.UpdateOrder(order);
 		}
 

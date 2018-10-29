@@ -25,17 +25,6 @@ namespace Warehouse.Web.Controllers
             return View(_service.GetUnProcessedOrders());
         }
 
-		public IActionResult ProcessOrder(int orderId)
-		{
-			Order order = _service.GetOrderByid(orderId);
-			if (order == null)
-			{
-				return NotFound();
-			}
-			_service.ProcessOrder(orderId);
-			return View(order);
-		}
-		
         public IActionResult Details(int orderId)
         {
 			Order order = _service.GetOrderByid(orderId);
@@ -46,7 +35,20 @@ namespace Warehouse.Web.Controllers
 
             return View(order);
         }
-		
+
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public IActionResult ProcessOrder(int orderId)
+		{
+			Order order = _service.GetOrderByid(orderId);
+			if (order == null)
+			{
+				return NotFound();
+			}
+			_service.ProcessOrder(orderId);
+			return RedirectToAction(nameof(Index));
+		}
+
         public IActionResult Create()
         {
             return View();

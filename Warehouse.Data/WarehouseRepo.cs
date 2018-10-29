@@ -57,7 +57,7 @@ namespace Warehouse.Data
 
 		public List<Order> GetUnProcessedOrders()
 		{
-			return FakeDb.Orders.FindAll(order => order.Processed == true);
+			return FakeDb.Orders.FindAll(order => order.Processed == false);
 		}
 
 		public List<Order> GetOrdersByProductId(int productId)

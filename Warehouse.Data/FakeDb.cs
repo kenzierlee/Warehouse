@@ -7,7 +7,7 @@ namespace Warehouse.Data
 {
 	class FakeDb
 	{
-		public static int NextId = 4;
+		public static int NextId = 9;
 		public static List<Order> Orders = new List<Order>()
 		{
 			new Order()
