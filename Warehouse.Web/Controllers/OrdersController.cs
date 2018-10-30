@@ -25,17 +25,6 @@ namespace Warehouse.Web.Controllers
             return View(_service.GetUnProcessedOrders());
         }
 
-        public IActionResult Details(int orderId)
-        {
-			Order order = _service.GetOrderByid(orderId);
-            if (order == null)
-            {
-                return NotFound();
-            }
-
-            return View(order);
-        }
-
 		[HttpPost]
 		public IActionResult ProcessOrder(Order o)
 		{
