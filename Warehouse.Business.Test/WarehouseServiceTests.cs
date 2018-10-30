@@ -73,7 +73,7 @@ namespace Warehouse.Business.Test
 			}
 			catch (Exception ex)
 			{
-				Assert.AreEqual("Order is already processed and cannot be updated", ex.Message);
+				Assert.AreEqual("Action not available", ex.Message);
 				return;
 			}
 			Assert.Fail("Order shouldn't have been able to update");

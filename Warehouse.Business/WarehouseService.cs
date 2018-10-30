@@ -34,11 +34,11 @@ namespace Warehouse.Business
 			Order existingOrder = _repo.GetOrderById(order.Id);
 			if (existingOrder == null)
 			{
-				throw new Exception("Order not found");
+				throw new Exception("Action not available");
 			}
 			if (existingOrder.Processed == true)
 			{
-				throw new Exception("Order is already processed and cannot be updated");
+				throw new Exception("Action not available");
 			}
 			return _repo.UpdateOrder(order);
 		}
