@@ -37,15 +37,14 @@ namespace Warehouse.Web.Controllers
         }
 
 		[HttpPost]
-		[ValidateAntiForgeryToken]
-		public IActionResult ProcessOrder(int orderId)
+		public IActionResult ProcessOrder(Order o)
 		{
-			Order order = _service.GetOrderByid(orderId);
+			Order order = _service.GetOrderByid(o.Id);
 			if (order == null)
 			{
 				return NotFound();
 			}
-			_service.ProcessOrder(orderId);
+			_service.ProcessOrder(order.Id);
 			return RedirectToAction(nameof(Index));
 		}
 
